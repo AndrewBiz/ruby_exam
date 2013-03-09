@@ -1,0 +1,3 @@
+== ruby_exam
+
+Ruby task generator helper - for ruby teachers and students
