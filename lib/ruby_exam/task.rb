@@ -11,6 +11,10 @@ module RubyExam
     def initialize( *args )
       @input =[]
       @output_teacher = []
+      if (/^task_([A-Za-z]*)(\d*)\.rb$/ =~ $PROGRAM_NAME)
+        @topic = $1.upcase
+        @number = $2
+      end
       @name = "UNDEFINED"
       @description = "NOTHING"
       prepare( *args )
@@ -19,7 +23,7 @@ module RubyExam
     def describe
       puts
       puts "*** ЭКЗАМЕН по языку RUBY ***"
-      puts "Билет #{@name}"
+      puts "Тема '#{@topic}', Билет №#{@number} #{@name}"
       puts "ДАНО:"
       @input.each do |var|
         val = instance_variable_get "@#{var}"
@@ -30,12 +34,12 @@ module RubyExam
 
     def solve( *args )
       puts "================"
-      puts "ОТВЕТ ученика : #{args}"
-      puts "ОТВЕТ учителя : #{@output_teacher}"
+      puts "ОТВЕТ ученика : #{args.inspect[1..-2]}"
+      puts "ОТВЕТ учителя : #{@output_teacher.inspect[1..-2]}"
       if args == @output_teacher
-        puts ":) УРА!!! Решение ученика верно"
+        puts "Решение ученика верно, УРА!"
       else
-        puts ":( Решение ученика НЕВЕРНО!"
+        puts "Решение ученика НЕВЕРНО :("
       end
     end
 
