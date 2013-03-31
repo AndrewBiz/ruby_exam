@@ -8,7 +8,7 @@ module RubyExam
     def prepare( *args )
       @name = "Удаляем и заменяем элементы хэша"
       init_input( :a, {key1: "значение 1", key2: "значение 2", key3: "значение 3", key333: "XXX", key_h:{ a: 1, b: 2, x: "XXX", c: 333, d: 4}}, args[0])
-      @description = "удалить из хэша лишние элементы (:key3 и :x) и заменить значение элемента :c на 3"
+      @description = "удалить из хэша лишние элементы (:key333 и :x) и заменить значение элемента :c на 3"
       #решение
       a = Marshal.load( Marshal.dump(@a) )
       a.delete(:key333)
